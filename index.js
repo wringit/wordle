@@ -122,7 +122,10 @@ if (e.keyCode === 13 && guess.length===5) {
 		}
 	}
 	guess = [];
-	if (row === 4) return;
+	if (row === 4){ 
+		alert("TRhe word was" + word);
+	return;
+	}
 	row++;
 }
 
