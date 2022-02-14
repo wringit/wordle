@@ -108,12 +108,14 @@ if (e.keyCode === 13 && guess.length===5) {
 	
 	let rowArray = squares.slice((row+1)*5-5,(row+1)*5);
 	let wordArray = word.split("");
+	let score=0;
 	for (let i=0; i<guess.length;i++) {
 		console.log("hell")
 		if (wordArray[i] === guess[i]){
 			console.log("o");
 			rowArray[i].changeState("green");
 			rowArray[i].letter(rowArray[i].ctext);
+			score++;
                 
 		} else if (wordArray.includes(guess[i])) {
 			rowArray[i].changeState("yellow");
@@ -123,7 +125,7 @@ if (e.keyCode === 13 && guess.length===5) {
 			rowArray[i].letter(rowArray[i].ctext);
 		}
 	}
-	if (guess === wordArray) {
+	if (score === 5) {
 		game = false;
 		alert("You have won! You truly are an alcoholic.");
 		return;
