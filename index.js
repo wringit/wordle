@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'gray'
-
+let game = true;
 
 let words = "beers, booze, drink, wines, drunk, hooch, anjou, brown, wisky, cider, white, cream, creme, cacao, sweet, sleep, cuvee, cynar, dirty, grape, taste, hatch, flips, toddy, julep, lager, liter, loire, pinot, proof, punch, crawl, vodka, sling, smash, split, stout, syrah, tears, tonic, twist, xeres, yeast".split(", ");
 let word = words[Math.floor(Math.random()*words.length)];
@@ -76,6 +76,7 @@ for (let i=0;i<buttons.length;i++) {
 
 let guess = [];
 function guessText(lt) {
+if (!game) return;
 let rowArray = squares.slice((row+1)*5-5,(row+1)*5);
 if (lt.length > 1) {
 if (guess.length > 0) {
@@ -104,6 +105,7 @@ if (e.keyCode >= 97 && e.keyCode <= 122) {
 	return;
 }
 if (e.keyCode === 13 && guess.length===5) {
+	
 	let rowArray = squares.slice((row+1)*5-5,(row+1)*5);
 	let wordArray = word.split("");
 	for (let i=0; i<guess.length;i++) {
@@ -121,9 +123,15 @@ if (e.keyCode === 13 && guess.length===5) {
 			rowArray[i].letter(rowArray[i].ctext);
 		}
 	}
+	if (guess === wordArray) {
+		game = false;
+		alert("You have won! You truly are an alcoholic.");
+		return;
+	}
 	guess = [];
 	if (row === 4){ 
-		alert("TRhe word was" + word);
+		alert("You must drink more wisky if you are ever to have hope. The word was " + word);
+		game = false;
 	return;
 	}
 	row++;
