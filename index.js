@@ -113,9 +113,8 @@ if (e.keyCode === 13 && guess.length===5) {
 	    alert("What you have guessed is not a word. More wisky is required.");
 	    return;
 	}
-=======
+
 	
->>>>>>> 3436ebe8d6644680a7aede1d8922ce5f3c40b022
 	let rowArray = squares.slice((row+1)*5-5,(row+1)*5);
 	let wordArray = word.split("");
 	let score=0;
