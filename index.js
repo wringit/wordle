@@ -126,6 +126,7 @@ let finishGuess = function() {
 	    return;
 	}
 
+
 	let rowArray = squares.slice((row+1)*5-5,(row+1)*5);
 	let wordArray = word.split("");
 	let score=0;
